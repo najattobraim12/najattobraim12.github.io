@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Najat Tobraim — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #f4f1ea;
+      --white: #ffffff;
+      --black: #1f1f1f;
+      --gray: #6b7280;
+      --gray-light: #e5e7eb;
+      --accent: #c8a96e;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--black);
+      line-height: 1.6;
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(244,241,234,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gray-light);
+      padding: 1.2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+    }
+
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--gray);
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--black); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      padding: 10rem 3rem 5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero-tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.5rem, 7vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--gray);
+      line-height: 1.8;
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-dark {
+      display: inline-block;
+      padding: 0.9rem 2rem;
+      background: var(--black);
+      color: white;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border-radius: 50px;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    .btn-dark:hover { transform: translateY(-2px); opacity: 0.85; }
+
+    .btn-outline {
+      display: inline-block;
+      padding: 0.9rem 2rem;
+      background: transparent;
+      color: var(--black);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border-radius: 50px;
+      border: 1.5px solid var(--black);
+      transition: background 0.2s, color 0.2s, transform 0.2s;
+    }
+    .btn-outline:hover { background: var(--black); color: white; transform: translateY(-2px); }
+
+    .hero-card {
+      border-radius: 35px;
+      overflow: hidden;
+      height: 500px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.13);
+      position: relative;
+    }
+
+    .hero-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+
+    .hero-card-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      padding: 2.5rem 2rem 1.8rem;
+    }
+
+    .hero-card-label p {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 0.3rem;
+    }
+
+    .hero-card-label h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: white;
+      font-weight: 700;
+    }
+
+    /* ── SECTIONS ── */
+    .section-full { padding: 6rem 3rem; }
+
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 3rem;
+    }
+
+    /* ── ABOUT ── */
+    .about-bg { background: var(--white); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      font-size: 1rem;
+      color: var(--gray);
+      line-height: 1.9;
+      margin-bottom: 1.2rem;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .skill-card {
+      background: var(--white);
+      border-radius: 30px;
+      padding: 2rem;
+      border: 1px solid var(--gray-light);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+      transition: transform 0.3s;
+    }
+    .skill-card:hover { transform: translateY(-6px); }
+
+    .skill-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+    }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+    .tag {
+      background: var(--cream);
+      padding: 0.35rem 0.9rem;
+      border-radius: 50px;
+      font-size: 0.78rem;
+      font-weight: 500;
+    }
+
+    /* ── PROJECTS ── */
+    .projects-bg { background: var(--white); }
+
+    .project-card {
+      background: var(--cream);
+      border-radius: 35px;
+      padding: 2.5rem;
+      border: 1px solid var(--gray-light);
+      margin-bottom: 2.5rem;
+      transition: box-shadow 0.3s;
+    }
+    .project-card:hover { box-shadow: 0 20px 50px rgba(0,0,0,0.08); }
+
+    .project-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      font-weight: 800;
+      margin-bottom: 0.8rem;
+      letter-spacing: -0.02em;
+    }
+
+    .project-card > p {
+      color: var(--gray);
+      line-height: 1.8;
+      margin-bottom: 1.2rem;
+      font-size: 0.95rem;
+    }
+
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+
+    .project-tag {
+      background: var(--white);
+      padding: 0.35rem 0.9rem;
+      border-radius: 50px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      border: 1px solid var(--gray-light);
+    }
+
+    /* Screenshots */
+    .screenshots {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .screenshots.two-col { grid-template-columns: repeat(2, 1fr); }
+
+    .screenshot-item {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--gray-light);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+      transition: transform 0.25s, box-shadow 0.25s;
+      cursor: zoom-in;
+      background: #1a1a1a;
+    }
+    .screenshot-item:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.14);
+    }
+
+    .screenshot-item img {
+      width: 100%;
+      height: 175px;
+      object-fit: cover;
+      object-position: top left;
+      display: block;
+    }
+
+    .screenshot-caption {
+      padding: 0.6rem 0.9rem;
+      font-size: 0.72rem;
+      color: var(--gray);
+      background: var(--white);
+      font-weight: 500;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.9);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .lightbox.open { display: flex; }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 88vh;
+      border-radius: 12px;
+      object-fit: contain;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1.5rem; right: 2rem;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+      line-height: 1;
+    }
+    .lightbox-close:hover { opacity: 1; }
+
+    /* ── EDU + CERTS ── */
+    .edu-certs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+    }
+
+    .edu-item {
+      border-left: 3px solid var(--black);
+      padding-left: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .edu-item.muted { border-left-color: var(--gray-light); }
+
+    .edu-item h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    .edu-item p { color: var(--gray); font-size: 0.88rem; margin-top: 0.2rem; }
+
+    .cert-card {
+      background: var(--white);
+      border: 1px solid var(--gray-light);
+      border-radius: 25px;
+      padding: 1.2rem 1.6rem;
+      margin-bottom: 1rem;
+      font-size: 0.92rem;
+      font-weight: 500;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      transition: transform 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .cert-card:hover { transform: translateY(-3px); }
+
+    .cert-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* ── CONTACT ── */
+    .contact-bg { background: var(--black); color: white; }
+
+    .contact-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+
+    .contact-inner .section-label { color: rgba(255,255,255,0.4); }
+    .contact-inner .section-title { color: white; margin-bottom: 1.5rem; }
+
+    .contact-desc {
+      color: rgba(255,255,255,0.6);
+      font-size: 1rem;
+      line-height: 1.8;
+      max-width: 550px;
+      margin: 0 auto 3rem;
+    }
+
+    .contact-row {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.75);
+    }
+
+    footer {
+      background: var(--black);
+      color: rgba(255,255,255,0.25);
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.75rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade { animation: fadeUp 0.7s ease forwards; }
+    .d1 { animation-delay: 0.1s; opacity: 0; }
+    .d2 { animation-delay: 0.25s; opacity: 0; }
+    .d3 { animation-delay: 0.4s; opacity: 0; }
+    .d4 { animation-delay: 0.55s; opacity: 0; }
+    .d5 { animation-delay: 0.7s; opacity: 0; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 8rem 1.5rem 3rem; }
+      .hero-card { height: 380px; }
+      .about-grid, .edu-certs-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .screenshots { grid-template-columns: repeat(2, 1fr); }
+      .screenshots.two-col { grid-template-columns: 1fr; }
+      .section-full { padding: 4rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close">✕</span>
+  <img id="lightbox-img" src="" alt="Screenshot">
+</div>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">Najat.</div>
+  <ul class="nav-links">
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#skills">Compétences</a></li>
+    <li><a href="#projects">Projets</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <p class="hero-tag fade d1">Portfolio • Cybersécurité</p>
+    <h1 class="fade d2">TOBRAIM<br>Najat</h1>
+    <p class="hero-desc fade d3">
+      Étudiante en ingénierie des réseaux intelligents & cybersécurité à l'ENSA Khouribga. Passionnée par les systèmes Linux, les réseaux et la sécurité offensive & défensive.
+    </p>
+    <div class="btn-row fade d4">
+      <a href="#projects" class="btn-dark">Voir mes projets</a>
+      <a href="mailto:najattobraim12@gmail.com" class="btn-outline">Contact</a>
+    </div>
+  </div>
+
+  <div class="hero-card fade d5">
+    <img src="images/photo.jpg" alt="Najat Tobraim">
+    <div class="hero-card-label">
+      <p>Réseaux & Cybersécurité</p>
+      <h2>ENSA Khouribga</h2>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="about-bg section-full" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <p class="section-label">À propos</p>
+        <h2 class="section-title">Une étudiante motivée par la sécurité informatique et les réseaux.</h2>
+      </div>
+      <div class="about-text">
+        <p>Actuellement en première année du cycle ingénieur à l'ENSA Khouribga, je développe mes compétences dans les infrastructures réseau, les systèmes Linux et la cybersécurité.</p>
+        <p>J'aime travailler sur des laboratoires virtuels afin de comprendre le fonctionnement des attaques, des mécanismes de défense et des architectures réseau.</p>
+        <p>Mon objectif est d'acquérir une expérience concrète dans le domaine de la cybersécurité et du cloud computing.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<div class="section-full" id="skills">
+  <div class="section-inner">
+    <p class="section-label">Compétences</p>
+    <h2 class="section-title">Technologies & outils</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>Programmation</h3>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">C</span>
+          <span class="tag">Java</span>
+          <span class="tag">SQL</span>
+          <span class="tag">PHP</span>
+          <span class="tag">Assembly</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Réseaux</h3>
+        <div class="tags">
+          <span class="tag">TCP/IP</span>
+          <span class="tag">DNS</span>
+          <span class="tag">DHCP</span>
+          <span class="tag">SSH</span>
+          <span class="tag">VLAN</span>
+          <span class="tag">VPN</span>
+          <span class="tag">Linux</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Cybersécurité</h3>
+        <div class="tags">
+          <span class="tag">Wireshark</span>
+          <span class="tag">Metasploit</span>
+          <span class="tag">Nmap</span>
+          <span class="tag">Burp Suite</span>
+          <span class="tag">pfSense</span>
+          <span class="tag">IDS/IPS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<div class="projects-bg section-full" id="projects">
+  <div class="section-inner">
+    <p class="section-label">Projets</p>
+    <h2 class="section-title">Quelques projets académiques</h2>
+
+    <!-- Projet 1 : Red/Blue Team -->
+    <div class="project-card">
+      <h3>Red Team & Blue Team Lab</h3>
+      <p>Déploiement d'un laboratoire virtuel sous VMware Workstation Pro avec Kali Linux et Metasploitable2 pour réaliser des simulations d'attaques et de défense réseau.</p>
+      <div class="project-tags">
+        <span class="project-tag">Metasploit</span>
+        <span class="project-tag">Hydra</span>
+        <span class="project-tag">Nmap</span>
+        <span class="project-tag">Wireshark</span>
+        <span class="project-tag">iptables</span>
+        <span class="project-tag">Kali Linux</span>
+      </div>
+      <div class="screenshots">
+        <div class="screenshot-item" onclick="openLightbox('images/redteam1.png')">
+          <img src="images/redteam1.png" alt="Nmap scan">
+          <div class="screenshot-caption">🔍 Nmap — Service scan</div>
+        </div>
+        <div class="screenshot-item" onclick="openLightbox('images/redteam2.png')">
+          <img src="images/redteam2.png" alt="Metasploit exploit">
+          <div class="screenshot-caption">⚡ Metasploit — Exploitation</div>
+        </div>
+        <div class="screenshot-item" onclick="openLightbox('images/redteam3.png')">
+          <img src="images/redteam3.png" alt="iptables defense">
+          <div class="screenshot-caption">🛡️ iptables — Défense réseau</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projet 2 : Protocoles -->
+    <div class="project-card">
+      <h3>Configuration des protocoles réseau</h3>
+      <p>Installation et configuration d'un serveur Ubuntu afin de déployer différents services réseau (DNS, DHCP, SSH, FTP, SMTP, HTTP) dans un environnement virtuel, validés depuis des machines clientes.</p>
+      <div class="project-tags">
+        <span class="project-tag">DNS</span>
+        <span class="project-tag">DHCP</span>
+        <span class="project-tag">FTP</span>
+        <span class="project-tag">SSH</span>
+        <span class="project-tag">SMTP</span>
+        <span class="project-tag">HTTP</span>
+        <span class="project-tag">Ubuntu Server</span>
+      </div>
+      <div class="screenshots two-col">
+        <div class="screenshot-item" onclick="openLightbox('images/protocoles1.png')">
+          <img src="images/protocoles1.png" alt="Configuration serveur">
+          <div class="screenshot-caption">⚙️ Configuration serveur Ubuntu</div>
+        </div>
+        <div class="screenshot-item" onclick="openLightbox('images/protocoles2.png')">
+          <img src="images/protocoles2.png" alt="Tests client">
+          <div class="screenshot-caption">✅ Tests depuis machine cliente</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- EDUCATION + CERTIFICATIONS -->
+<div class="section-full">
+  <div class="section-inner">
+    <div class="edu-certs-grid">
+      <div>
+        <p class="section-label">Formation</p>
+        <h2 class="section-title">Parcours académique</h2>
+        <div class="edu-item">
+          <h3>ENSA Khouribga</h3>
+          <p>Cycle d'ingénieur en Réseaux Intelligents & Cybersécurité</p>
+          <p>2025 – Présent</p>
+        </div>
+        <div class="edu-item muted">
+          <h3>ENSA Khouribga</h3>
+          <p>Cycle préparatoire</p>
+          <p>2023 – 2025</p>
+        </div>
+        <div class="edu-item muted">
+          <h3>École Nour</h3>
+          <p>Baccalauréat Sciences Physiques</p>
+          <p>2021 – 2022</p>
+        </div>
+      </div>
+
+      <div>
+        <p class="section-label">Certifications</p>
+        <h2 class="section-title">Certifications</h2>
+        <div class="cert-card"><div class="cert-dot"></div> AWS Academy Cloud Foundations</div>
+        <div class="cert-card"><div class="cert-dot"></div> Red Hat RH124 — System Administration I</div>
+        <div class="cert-card"><div class="cert-dot"></div> Cisco Certified Network Associate (CCNA)</div>
+        <div class="cert-card"><div class="cert-dot"></div> CCNA: Switching, Routing & Wireless (SRWE)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-bg section-full" id="contact">
+  <div class="contact-inner">
+    <p class="section-label">Contact</p>
+    <h2 class="section-title">Construisons quelque chose ensemble.</h2>
+    <p class="contact-desc">
+      Disponible pour des stages et des opportunités afin de développer davantage mes compétences dans le domaine de la cybersécurité et des infrastructures réseau.
+    </p>
+    <div class="contact-row">
+      <div class="contact-item"><span>📧</span> najattobraim12@gmail.com</div>
+      <div class="contact-item"><span>📍</span> Casablanca, Maroc</div>
+      <div class="contact-item"><span>📞</span> +212 721-880989</div>
+    </div>
+  </div>
+</div>
+
+<footer>© 2025 Najat Tobraim · Tous droits réservés</footer>
+
+<script>
+  function openLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('open');
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+
+</body>
+</html>
